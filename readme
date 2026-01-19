@@ -1,0 +1,28 @@
+General notes
+
+🧠 Microservices Breakdown
+Service	Responsibility
+API Gateway                 Single entry point
+Auth Service	            Login, JWT, roles
+User Service	            Student profiles
+Course Service	            Courses, lessons
+Progress Service	        Track learning
+AI Recommendation Service	Smart suggestions
+
+
+Each service/app 
+
+# Locally in your project.
+# in every app/service
+
+npm install -D typescript ts-node-dev @types/node
+
+npm install express axios
+
+npm install -D @types/express
+
+npx tsc --init
+
+npm install -D ts-node
+
+npm install -D nodemon
