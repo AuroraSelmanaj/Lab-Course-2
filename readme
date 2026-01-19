@@ -26,6 +26,3 @@ npx tsc --init
 npm install -D ts-node
 
 npm install -D nodemon
-
-
-test
