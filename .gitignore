@@ -1,5 +1,5 @@
 api-gateway/node_modules/
 api-gateway/package-lock.json
 
-services/user/node_modules/
-services/user/package-lock.json
+services/*/node_modules/
+services/*/package-lock.json
