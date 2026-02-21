@@ -1,8 +1,11 @@
-import express, { Application, NextFunction, Request, response, Response } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
+import dotenv from "dotenv";
+import { sequelize } from "./config/db";
+import authRoutes from "./routes/auth.routes";
 
 const app: Application = express();
-const port: number = 4001;
 
+dotenv.config();
 app.use(express.json());
 
 // middleware
@@ -14,11 +17,31 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     }
 })
 
-app.get('/', async (req: Request, res: Response, next: NextFunction)=>{
-    res.json({auth: true});
-})
+app.use("/auth", authRoutes);
 
-app.listen(port, () => {
-    console.log(`Listening Api Gateway port ${port}`);
-})
+async function startServer() {
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync({alter: true}); // auto create tables
+
+    console.log("Database connected");
+
+    app.listen(process.env.PORT, () => {
+      console.log(`Auth Service running on port ${process.env.PORT}`);
+    });
+
+  } catch (error) {
+    console.error("Unable to connect to database:", error);
+  }
+}
+
+startServer();
+
+// app.get('/', async (req: Request, res: Response, next: NextFunction)=>{
+//     res.json({auth: true});
+// })
+
+// app.listen(process.env.PORT, () => {
+//     console.log(`Listening Api Gateway port ${process.env.PORT}`);
+// })
 

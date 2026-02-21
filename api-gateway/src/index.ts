@@ -1,23 +1,12 @@
-import axios from "axios";
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
+import authRoutes from "./routes/auth.routes";
 
 const app: Application = express();
 const port: number = 4000;
 
 app.use(express.json());
 
-app.get('/login', async (req: Request, res: Response)=>{  
-
-    const response = await axios.get(
-        `http://localhost:4001`, {
-            headers: {
-                'x-internal-secret': 'secret'
-            }
-        }
-    );
-
-    res.send(response.data);
-})
+app.use(authRoutes);
 
 app.listen(port, () => {
     console.log(`Listening Api Gateway port ${port}`);
