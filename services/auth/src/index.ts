@@ -17,7 +17,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     }
 })
 
-app.use("/auth", authRoutes);
+app.use(authRoutes);
 
 async function startServer() {
   try {
