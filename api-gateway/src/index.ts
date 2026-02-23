@@ -7,7 +7,7 @@ const port: number = 4000;
 
 app.use(express.json());
 
-app.use(authRoutes);
+app.use("/auth", authRoutes);
 app.use(courseRoutes);
 
 app.listen(port, () => {

@@ -1,4 +1,4 @@
-import Router, { Request, Response } from "express";
+import Router, { NextFunction, Request, Response } from "express";
 import axios from "axios";
 
 const authRoutes = Router();
@@ -14,8 +14,8 @@ authRoutes.post('/signIn', async (req: Request, res: Response) => {
     res.send(response.data);
 })
 
-authRoutes.post('/signUp', async (req: Request, res: Response) => {
-    const response = await axios.post(`http://localhost:4001/signUp`, req.body, secret);
+authRoutes.post('/signUp', async (req: Request, res: Response, next: NextFunction) => {
+    const response = await axios.post(`http://localhost:4001/signUp`, req.body, secret)
     res.send(response.data);
 })
 
