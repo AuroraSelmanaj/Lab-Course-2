@@ -68,5 +68,35 @@ courseRoutes.post('/course/create', async (req: Request, res: Response) => {
     }
 })
 
+courseRoutes.post('/course/enroll', async (req: Request, res: Response) => {
+
+    try {
+        const token = req.headers.authorization;
+
+        const validation = await axios.post(
+            "http://localhost:4001/validate",
+            {},
+            {
+                headers: { Authorization: token, ...secret.headers }
+            }
+        );
+
+        const response = await axios.post(
+            "http://localhost:4002/enroll",
+            req.body,
+            {
+                headers: {
+                    "x-user-data": JSON.stringify(validation.data.user),
+                    ...secret.headers
+                }
+            }
+        );
+
+        res.json(response.data);
+
+    } catch (error: any) {
+        res.status(401).json({ message: "Unauthorized" });
+    }
+})
 
 export default courseRoutes;
