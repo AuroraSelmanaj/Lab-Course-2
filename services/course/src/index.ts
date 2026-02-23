@@ -1,5 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
+import { mongoConnect } from "./config/db";
 
 const app: Application = express();
 
@@ -23,8 +24,8 @@ app.get('/', (req: Request, res: Response) => {
 
 async function startServer() {
     try {
-
-        console.log("Database connected");
+        await mongoConnect();
+        // console.log("Database connected");
 
         app.listen(process.env.PORT, () => {
             console.log(`Course Service running on port ${process.env.PORT}`);
