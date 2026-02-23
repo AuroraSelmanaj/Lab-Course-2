@@ -5,7 +5,14 @@ const router = Router();
 
 router.post("/", async (req: Request, res: Response) => {
   try {
-    const course = await Course.create(req.body);
+    const user = await JSON.parse(req.headers["x-user-data"] as string);
+
+    if(!user){
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const course = await Course.create({instructorId: user.id, ...req.body});
+    
     res.status(201).json(course);
   } catch (error) {
     res.status(400).json({ message: "Error creating course" });
