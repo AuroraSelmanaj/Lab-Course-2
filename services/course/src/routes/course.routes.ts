@@ -1,5 +1,7 @@
 import { Router, Request, Response } from "express";
 import { Course } from "../models/course";
+import { Enroll } from "../models/enrolled";
+
 
 const router = Router();
 
@@ -7,15 +9,31 @@ router.post("/", async (req: Request, res: Response) => {
   try {
     const user = await JSON.parse(req.headers["x-user-data"] as string);
 
-    if(!user){
+    if (!user) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    const course = await Course.create({instructorId: user.id, ...req.body});
-    
+    const course = await Course.create({ instructorId: user.id, ...req.body });
+
     res.status(201).json(course);
   } catch (error) {
     res.status(400).json({ message: "Error creating course" });
+  }
+});
+
+router.post("/enroll", async (req: Request, res: Response) => {
+  try {
+    const user = await JSON.parse(req.headers["x-user-data"] as string);
+
+    if (!user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const course = await Enroll.create({...req.body });
+
+    res.status(201).json(course);
+  } catch (error) {
+    res.status(400).json({ message: "Error enrolling course" });
   }
 });
 
@@ -50,8 +68,7 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 router.delete("/:id", async (req: Request, res: Response) => {
-  
-  const course = await Course.findByIdAndDelete({_id: req.params.id});
+  const course = await Course.findByIdAndDelete({ _id: req.params.id });
 
   if (!course) {
     return res.status(404).json({ message: "Course not found" });

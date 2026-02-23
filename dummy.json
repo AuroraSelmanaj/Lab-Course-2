@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "title": "JavaScript for Beginners",
+    "category": "Programming",
+    "level": "Beginner",
+    "instructorId": "101",
+    "rating": 4.5,
+    "students": 1200
+  },
+  {
+    "id": "2",
+    "title": "Advanced Node.js Microservices",
+    "category": "Programming",
+    "level": "Advanced",
+    "instructorId": "102",
+    "rating": 4.8,
+    "students": 850
+  },
+  {
+    "id": "3",
+    "title": "UI/UX Design Fundamentals",
+    "category": "Design",
+    "level": "Beginner",
+    "instructorId": "103",
+    "rating": 4.3,
+    "students": 640
+  },
+  {
+    "id": "4",
+    "title": "React & TypeScript Masterclass",
+    "category": "Programming",
+    "level": "Intermediate",
+    "instructorId": "101",
+    "rating": 4.7,
+    "students": 980
+  },
+  {
+    "id": "5",
+    "title": "Digital Marketing Strategy",
+    "category": "Marketing",
+    "level": "Intermediate",
+    "instructorId": "104",
+    "rating": 4.2,
+    "students": 720
+  },
+  {
+    "id": "6",
+    "title": "Machine Learning Basics",
+    "category": "AI",
+    "level": "Beginner",
+    "instructorId": "105",
+    "rating": 4.6,
+    "students": 1100
+  },
+  {
+    "id": "7",
+    "title": "Deep Learning with Python",
+    "category": "AI",
+    "level": "Advanced",
+    "instructorId": "105",
+    "rating": 4.9,
+    "students": 500
+  },
+  {
+    "id": "8",
+    "title": "Cybersecurity Essentials",
+    "category": "Security",
+    "level": "Beginner",
+    "instructorId": "106",
+    "rating": 4.4,
+    "students": 670
+  },
+  {
+    "id": "9",
+    "title": "Cloud Computing with AWS",
+    "category": "Cloud",
+    "level": "Intermediate",
+    "instructorId": "107",
+    "rating": 4.6,
+    "students": 890
+  },
+  {
+    "id": "10",
+    "title": "Docker & Kubernetes Complete Guide",
+    "category": "Cloud",
+    "level": "Advanced",
+    "instructorId": "107",
+    "rating": 4.8,
+    "students": 760
+  }
+]

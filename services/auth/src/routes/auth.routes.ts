@@ -58,7 +58,6 @@ router.post("/signIn", async (req: Request, res: Response) => {
   }
 });
 
-
 router.post("/validate", (req: Request, res: Response) => {
   
   const token = req.headers.authorization?.split(" ")[1];
