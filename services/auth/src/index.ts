@@ -11,7 +11,7 @@ app.use(express.json());
 // middleware
 app.use((req: Request, res: Response, next: NextFunction) => {
     if(req.headers['x-internal-secret'] === 'secret') {
-        next();
+      next();
     } else {
         res.status(403).json({auth: 'Not Authorized'});
     }
@@ -36,12 +36,3 @@ async function startServer() {
 }
 
 startServer();
-
-// app.get('/', async (req: Request, res: Response, next: NextFunction)=>{
-//     res.json({auth: true});
-// })
-
-// app.listen(process.env.PORT, () => {
-//     console.log(`Listening Api Gateway port ${process.env.PORT}`);
-// })
-

@@ -48,7 +48,7 @@ router.post("/signIn", async (req: Request, res: Response) => {
     const token = jwt.sign(
       { id: user.id, role: user.role },
       JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "24h" }
     );
 
     res.json({ token });
@@ -60,25 +60,26 @@ router.post("/signIn", async (req: Request, res: Response) => {
 
 
 router.post("/validate", (req: Request, res: Response) => {
-
+  
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
     return res.status(401).json({ valid: false });
   }
 
+  
   try {
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET as string
     );
-    
+
     return res.json({
       valid: true,
       user: decoded
     });
 
-  } catch {
+  } catch {    
     return res.status(401).json({ valid: false });
   }
 })
