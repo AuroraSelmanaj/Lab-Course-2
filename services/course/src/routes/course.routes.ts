@@ -50,7 +50,6 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 router.delete("/:id", async (req: Request, res: Response) => {
-  console.log("id ---> ",req.params.id);
   
   const course = await Course.findByIdAndDelete({_id: req.params.id});
 
