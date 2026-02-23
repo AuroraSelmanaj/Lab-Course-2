@@ -50,7 +50,9 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 router.delete("/:id", async (req: Request, res: Response) => {
-  const course = await Course.findByIdAndDelete(req.params.id);
+  console.log("id ---> ",req.params.id);
+  
+  const course = await Course.findByIdAndDelete({_id: req.params.id});
 
   if (!course) {
     return res.status(404).json({ message: "Course not found" });
