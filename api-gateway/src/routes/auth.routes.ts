@@ -15,7 +15,7 @@ authRoutes.post('/signIn', async (req: Request, res: Response) => {
 })
 
 authRoutes.post('/signUp', async (req: Request, res: Response) => {
-    const response = await axios.post(`http://localhost:4001/signUp`, req.body,secret);
+    const response = await axios.post(`http://localhost:4001/signUp`, req.body, secret);
     res.send(response.data);
 })
 
