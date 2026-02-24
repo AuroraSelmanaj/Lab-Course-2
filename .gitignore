@@ -3,3 +3,6 @@ api-gateway/package-lock.json
 
 services/*/node_modules/
 services/*/package-lock.json
+
+frontend/node_modules
+frontend/package-lock.json
